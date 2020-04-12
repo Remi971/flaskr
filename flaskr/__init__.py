@@ -34,4 +34,10 @@ def create_app(test_config=None):
     def index():
         return 'Welcome to my website'
 
+    from . import db
+    db.init_app(app)
+
+    from . import auth
+    app.register.blueprint(auth.bp)
+
     return app
